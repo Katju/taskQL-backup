@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="starter">
+<html ng-app="taskQL">
 
   <head>
     <meta charset="utf-8">
@@ -10,9 +10,9 @@
     <link href="css/style.css" rel="stylesheet">
 
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+
 </head>
-
-
+<body ng-app="taskQL">
 <ion-view style="" title="Login">
     <ion-content class="has-header" overflow-scroll="true" padding="true">
 
@@ -20,21 +20,23 @@
       <h1 class="title" align="center"><img src="/img/funnel.png">Login </h1>
     </ion-header-bar>
 
-        <form style="" class="list">
+        <form style="" class="list" ng-submit="getSessionToken()" id="loginForm">
             <ion-list style="">
                 <label style="" class="item item-input">
                     <span class="input-label">Username</span>
-                    <input placeholder="" type="text">
+                    <input placeholder="username" type="text" ng-model="username">
                 </label>
                 <label style="" class="item item-input">
                     <span class="input-label">Passwort</span>
-                    <input placeholder="" type="password">
+                    <input placeholder="password" type="password" ng-model="password">
                 </label>
             </ion-list>
             <div style="height: 40px;" class="spacer"></div>
-            <a style="" class="button button-stable button-block" >Einloggen</a>
-            <a style="" class="button button-calm button-clear button-block">Account erstellen</a>
-            <a style="" class="button button-calm button-clear button-block">Passwort vergessen?</a>
+            <button class="button button-stable button-block" type="submit" form="loginForm">Einloggen</a>
+            <button class="button button-calm button-clear button-block">Account erstellen</a>
+            <button class="button button-calm button-clear button-block">Passwort vergessen?</a>
         </form>
     </ion-content>
 </ion-view>
+</body>
+</html>
