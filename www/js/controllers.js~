@@ -1,0 +1,8 @@
+angular.module('taskQL').controller('loginController', function($scope) {
+    $scope.loggingIn = function() {
+    	console.log("loginController");
+	    login.getSessionToken($scope.username, $scope.password);
+	    $scope.username = "";
+	    $scope.password = "";
+    };
+});
