@@ -1,7 +1,7 @@
-angular.module('taskQL')
+angular.module('taskQL')...
 	.factory('LoginService', function($q) {
     return {
-        loginUser: function(name, pw) {
+        loginUser: function(name, pw, $http) {
             var deferred = $q.defer();
             var promise = deferred.promise;
  			 var jsondata = {
