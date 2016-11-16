@@ -1,14 +1,17 @@
-angular.module('taskQL').controller('loginController', function($scope) {
-    $scope.credentials= {};
- 
-    $scope.login = function() {
-        LoginService.loginUser($scope.credentials.email, $scope.credentials.password).success(function(credentials) {
-            $state.go('tab.dash');
-        }).error(function(data) {
-            var alertPopup = $ionicPopup.alert({
-                title: 'Login failed!',
-                template: 'Please check your credentials!'
-            });
-        });
-    }
-})
+
+angular
+    .module('taskQL')
+    .controller('loginController', function($scope, $http) {
+    	$scope.sendLoginData = function(){
+    		var dataSource = "https://alpha.taskql.com/rest/api/1/taskql/login";
+        	var data = {username: $scope.username, password: $scope.password};
+        	$http.post(dataSource, data).then(function successCallback(response) {
+        		
+        		$scope.SessionToken = response.data
+        		
+        		}, function errorCallback(response) {
+        		  // ko
+        		});
+        };
+
+    });
