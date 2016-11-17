@@ -7,8 +7,7 @@
 
         <form style="" class="list" ng-controller="loginController">
 
-	        <div style="height: 40px;" class="spacer">
-	        </div>
+	        <div style="height: 40px;" class="spacer"></div>
 	
 	            <ion-list style="">
 	                <label style="" class="item item-input">
@@ -21,15 +20,14 @@
 	                </label>
 	            </ion-list>
 	
-	       <div style="height: 40px;" class="spacer">
-	       </div>
-	       <button class="button button-stable button-block" ng-click="sendLoginData()">Log in</a>
-	       <button class="button button-calm button-clear button-block">Sign up</a>
-	       <button class="button button-calm button-clear button-block">Forgot your password?</a>
+	       <div style="height: 40px;" class="spacer"></div>
+	       	<button class="button button-stable button-block" ng-click="sendLoginData()" ui-sref="dashboard({SessionToken: SessionToken.fullname})">Log in</button>	
+	       	<button class="button button-calm button-clear button-block">Sign up</button>
+	       	<button class="button button-calm button-clear button-block">Forgot your password?</button>
         <label style="" class="item item-input">
 	                  SessionToken: {{SessionToken.SessionToken}}
 	                    
-	                </label>
+	    </label>
         
         </form>
     </ion-content>

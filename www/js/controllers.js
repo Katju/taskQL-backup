@@ -14,4 +14,14 @@ angular
         		});
         };
 
-    });
+    })
+
+    .controller('dashboardController', function($scope) {
+
+
+    })
+
+    .controller('projecteditorController', function($scope){
+
+        
+    })

@@ -33,7 +33,20 @@ angular.module('taskQL', ['ionic'])
       templateUrl: 'templates/login.html',
       controller: 'loginController',
       controllerAs: 'loginDetail'
+    })
+
+    .state('dashboard', {
+      url:'/dashboard',
+      templateUrl: 'templates/dashboard.html',
+      controller:'dashboardController'
+   })
+
+    .state('projecteditor', {
+      url:'/projecteditor',
+      templateUrl: 'templates/projecteditor.html',
+      controller:'projecteditorController'
     });
+
 
     $urlRouterProvider.otherwise('/login');
 });
