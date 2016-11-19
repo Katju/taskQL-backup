@@ -32,13 +32,12 @@ angular.module('taskQL', ['ionic'])
       url:'/login',
       templateUrl: 'templates/login.html',
       controller: 'loginController',
-      controllerAs: 'loginDetail'
     })
 
     .state('dashboard', {
       url:'/dashboard',
       templateUrl: 'templates/dashboard.html',
-      controller:'dashboardController'
+      //controller:'dashboardController'
    })
 
     .state('projecteditor', {

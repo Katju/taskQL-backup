@@ -2,27 +2,23 @@
     <ion-content class="has-header" padding="true" overflow-scroll="true">
 
         <ion-header-bar>
-            <h1 class="title" align="center"><img src="/img/funnel.png">projects</h1>
+            <h1 class="title" align="center"><img src="/img/funnel.png">Projects</h1>
         </ion-header-bar>
+	        
+	        <form style="" class="list"  ng-controller="dashboardController">
 
-	        <div style="height: 40px;" class="spacer"></div>
-
-	        <h1 class="title">Hallo {{SessionTocken.fullname}}</h1>
-
-	        <form style="" class="list">
-
-            <label style="" class="item item-select">
-                <span class="input-label">project 1</span>
-                <select ng-model="option">
-                    <option>subproject 1</option>
-                    <option>subproject 2</option>
-                </select>
-            </label>
+		        <div style="height: 40px;" class="spacer"></div>
+		        	<h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
+	            <label style="" class="item item-select">
+	                <span class="input-label">Projects</span>
+	                <select ng-model="option">
+	                    <option>subproject 1</option>
+	                    <option>subproject 2</option>
+	                </select>
+	            </label>
 
            </form>
-
-
-
+           
     </ion-content>
 </ion-view>
 
