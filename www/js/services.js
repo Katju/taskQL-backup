@@ -8,5 +8,14 @@ angular
   
     			return $http.post(url, loginData);
     	    }
-    	}
-    });
+    	};
+    })
+    .factory('RestGet', function($http) {
+    		return {
+    			getRestGet: function(restGetUrl) {
+    				var url='https://alpha.taskql.com/rest/api/1/project/getAll';
+					return $http.get(restGetUrl);
+				}
+	 };
+	 });
+    		;
