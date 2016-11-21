@@ -1,0 +1,44 @@
+<ion-view style="" title="Registration">
+    <ion-content class="has-header" padding="true" overflow-scroll="true">
+        <ion-header-bar>
+            <h1 class="title" align="center"><img src="/img/funnel.png">Registration</h1>
+        </ion-header-bar>
+        
+        <form style="" class="list" ng-controller="registrationController">
+	        <div style="height: 40px;" class="spacer"></div>
+	        
+	        <ion-list style="">
+	        	<label style="" class="item item-input">
+		            <span class="input-label">Name</span>
+		            <input placeholder="type in your Name" type="text" ng-model="fullname"/>
+	            </label>
+
+	        	<label style="" class="item item-input">
+		            <span class="input-label">Email address</span>
+		            <input placeholder="type in your Email address" type="text" ng-model="username"/>
+	            </label>
+
+	            <label style="" class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input placeholder="create a password" type="password" ng-model="password"/>
+               	</label>
+            </ion-list>
+			
+			<div style="height: 40px;" class="spacer"></div>
+
+			<ion-checkbox ng-model="isChecked">please accept our Nutzungsbedingungen</ion-checkbox>
+			
+			<div style="height: 40px;" class="spacer"></div>
+
+			<ion-checkbox ng-model="isChecked">1-2-3-registration more</ion-checkbox>
+			<ion-checkbox ng-model="isChecked">Community-registration more</ion-checkbox>
+
+
+	       	<button class="button button-stable button-block">sign up</button>	
+	       	<button class="button button-calm button-clear button-block">cancel</button>
+	       	
+        	
+        </form>
+    </ion-content>
+</ion-view>
+

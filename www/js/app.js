@@ -28,6 +28,13 @@ angular.module('taskQL', ['ionic'])
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+
+    .state('registration', {
+      url:'/registration',
+      templateUrl:'templates/registration.html',
+      controller:'registrationController'
+    })
+
     .state('login', {
       url:'/login',
       templateUrl: 'templates/login.html',

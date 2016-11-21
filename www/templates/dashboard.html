@@ -9,14 +9,15 @@
 
 		        <div style="height: 40px;" class="spacer"></div>
 		        	<h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
-	            <label style="" class="item item-select">
-	                <span class="input-label">Projects</span>
+
+	            <label style="" class="item item-select" ng-controller="dashboardController">
+	                <span class="input-label">Projects {{project.title}}</span>
 	                <select ng-model="option">
 	                    <option>subproject 1</option>
 	                    <option>subproject 2</option>
 	                </select>
 	            </label>
-					<button class="button button-stable button-block" ng-click="getRestGetTest()">getRestGetTest</button>	
+
            </form>
            
     </ion-content>

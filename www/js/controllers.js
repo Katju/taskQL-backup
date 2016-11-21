@@ -1,5 +1,10 @@
 angular
     .module('taskQL')
+
+    .controller('registrationController', function($scope){
+
+    })
+
     .controller('loginController', function(Login, $scope, $rootScope, $location) {
     	
     	$scope.login = function(){ 
@@ -41,6 +46,7 @@ angular
     
     });
 
+   
     
 
     
