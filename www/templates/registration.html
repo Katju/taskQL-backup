@@ -8,17 +8,17 @@
 	        <div style="height: 40px;" class="spacer"></div>
 	        
 	        <ion-list style="">
-	        	<label style="" class="item item-input">
+	        	<label style="" class="item item-input item-stacked-label">
 		            <span class="input-label">Name</span>
-		            <input placeholder="type in your Name" type="text" ng-model="fullname"/>
+		            <input type="text" ng-model="fullname"/>
 	            </label>
 
-	        	<label style="" class="item item-input">
+	        	<label style="" class="item item-input item-stacked-label">
 		            <span class="input-label">Email address</span>
-		            <input placeholder="type in your Email address" type="text" ng-model="username"/>
+		            <input type="text" ng-model="username"/>
 	            </label>
 
-	            <label style="" class="item item-input">
+	            <label style="" class="item item-input item-stacked-label">
                     <span class="input-label">Password</span>
                     <input placeholder="create a password" type="password" ng-model="password"/>
                	</label>
@@ -26,19 +26,20 @@
 			
 			<div style="height: 40px;" class="spacer"></div>
 
-			<ion-checkbox ng-model="isChecked">please accept our Nutzungsbedingungen</ion-checkbox>
-			
+			<button class="button button-block" ng-click="openModal()" ng-controller="nuBeController">please accept our Nutzungsbedingungen</button>
 			<div style="height: 40px;" class="spacer"></div>
 
-			<ion-checkbox ng-model="isChecked">1-2-3-registration more</ion-checkbox>
-			<ion-checkbox ng-model="isChecked">Community-registration more</ion-checkbox>
+		
+			<ion-checkbox class="checkbox-calm">1-2-3-registration</ion-checkbox>
+			<ion-checkbox class="checkbox-calm">Community-registration</ion-checkbox>
 
 
 	       	<button class="button button-stable button-block">sign up</button>	
-	       	<button class="button button-calm button-clear button-block">cancel</button>
+	       	<button class="button button-calm button-clear button-block" ui-sref="login">cancel</button>
 	       	
         	
         </form>
     </ion-content>
 </ion-view>
 
+ 

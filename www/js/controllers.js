@@ -44,6 +44,28 @@ angular
 		}
 	)}
     
+    })
+
+    .controller('nuBeController', function($scope, $ionicModal){
+
+        $ionicModal.fromTemplateUrl('templates/nutzungsbedingungen.html', {
+            scope: $scope,
+            animation: 'side-in-up',
+        }).then(function(modal){
+            $scope.modal = modal;
+        });
+
+        $scope.openModal = function(){
+            $scope.modal.show();
+        };
+
+        $scope.closeModal = function(){
+            $scope.modal.hide();
+        };
+
+        $scope.$on('$destroy', function(){
+            $scope.modal.remove();
+        });
     });
 
    
