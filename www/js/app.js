@@ -26,14 +26,33 @@ angular.module('taskQL', ['ionic'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
+  $httpProvider.defaults.cache = true;
   $stateProvider
+
+    .state('registration', {
+      url:'/registration',
+      templateUrl:'templates/registration.html',
+      controller:'registrationController'
+    })
+
     .state('login', {
       url:'/login',
       templateUrl: 'templates/login.html',
-      controller: 'loginController',
-      controllerAs: 'loginDetail'
+      controller: 'loginController'
+    })
+
+    .state('dashboard', {
+      url:'/dashboard',
+      templateUrl: 'templates/dashboard.html'
+   })
+
+    .state('projecteditor', {
+      url:'/projecteditor',
+      templateUrl: 'templates/projecteditor.html',
+      controller:'projecteditorController'
     });
+
 
     $urlRouterProvider.otherwise('/login');
 });

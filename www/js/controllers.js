@@ -1,17 +1,60 @@
-
 angular
     .module('taskQL')
-    .controller('loginController', function($scope, $http) {
-    	$scope.sendLoginData = function(){
-    		var dataSource = "https://alpha.taskql.com/rest/api/1/taskql/login";
-        	var data = {username: $scope.username, password: $scope.password};
-        	$http.post(dataSource, data).then(function successCallback(response) {
-        		
-        		$scope.SessionToken = response.data
-        		
-        		}, function errorCallback(response) {
-        		  // ko
-        		});
-        };
 
-    });
+    .controller('registrationController', function($scope){
+
+    })
+
+    .controller('loginController', function(Login, $scope, $rootScope, $location) {
+    	$scope.login = function(){ 
+    		Login.getLogin($scope.username, $scope.password).then(function(response){
+    			$rootScope.loginResponse = response.data;
+    			$rootScope.sessionToken = response.data.SessionToken;
+    		    $location.path('dashboard');
+    		    Login.getAll($rootScope.sessionToken).then(function(response){
+    		        $rootScope.getAllResponse = response.data;
+
+    	        }).catch(function(response){
+    	            //request was not successful
+    	            //handle the error
+    	        });	
+    		    
+	        }).catch(function(response){
+	            //request was not successful
+	            //handle the error
+	        });
+    	}	
+    })
+     
+    .controller('dashboardController', function($scope) {
+    	
+    })
+
+    .controller('projecteditorController', function($scope){
+        
+    })
+
+ .controller('nuBeController', function ($scope, $ionicModal) {
+
+     $ionicModal.fromTemplateUrl('templates/nutzungsbedingungen.html', {
+         scope: $scope,
+         animation: 'side-in-up',
+     }).then(function (modal) {
+         $scope.modal = modal;
+     });
+
+     $scope.openModal = function () {
+         $scope.modal.show();
+     };
+
+     $scope.closeModal = function () {
+         $scope.modal.hide();
+     };
+
+     $scope.$on('$destroy', function () {
+         $scope.modal.remove();
+     });
+ });
+
+
+    
