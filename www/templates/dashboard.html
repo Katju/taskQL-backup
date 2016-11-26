@@ -9,12 +9,12 @@
 		        <div style="height: 40px;" class="spacer"></div>
 		        <h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
 
-                <div class="list">
-                    <span class="input-label">Projects</span>
+                <div class="card">
+                    <div class="item item-outline item-calm item-divider">Projects</div>
 
-                    <a class="item" ng-repeat="projects in getAllResponse.projects">
+                    <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects">
                         {{ projects.title }}
-                    </a>
+                    </div>
                 </div>
            </form>
            
