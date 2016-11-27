@@ -28,8 +28,8 @@ angular.module('taskQL', ['ionic'])
 
 .config(function($httpProvider, $stateProvider, $urlRouterProvider) {
   $httpProvider.defaults.cache = true;
+  
   $stateProvider
-
     .state('registration', {
       url:'/registration',
       templateUrl:'templates/registration.html',
@@ -39,7 +39,6 @@ angular.module('taskQL', ['ionic'])
     .state('login', {
       url:'/login',
       templateUrl: 'templates/login.html',
-      controller: 'loginController'
     })
 
     .state('dashboard', {
@@ -53,7 +52,5 @@ angular.module('taskQL', ['ionic'])
       controller:'projecteditorController'
     });
 
-
     $urlRouterProvider.otherwise('/login');
 });
-
