@@ -30,7 +30,7 @@ angular
             mainFactory.getProjectInfo(projectID, $rootScope.sessionToken).then(function(response){
                 
                 $rootScope.getProjectInfoResponse = response.data;
-                $location.path('subproject');
+                $location.path('dashboard_subproject');
 
             }).catch(function(response){
                 //request was not successful

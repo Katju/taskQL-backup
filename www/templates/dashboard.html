@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="item item-outline item-calm item-divider">Projects</div>
 
-                    <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects">
+                    <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects()">
                         {{ projects.title }}
                         <p>{{ projects.subprojects }} Subprojects</p>
                     </div>
