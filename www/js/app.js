@@ -46,11 +46,6 @@ angular.module('taskQL', ['ionic'])
       templateUrl: 'templates/dashboard.html'
    })
 
-    .state('dashboard_subproject',  {
-      url:'/dashboard_subproject',
-      templateUrl: 'templates/dashboard_subproject.html'
-    })
-
     .state('projecteditor', {
       url:'/projecteditor',
       templateUrl: 'templates/projecteditor.html',
