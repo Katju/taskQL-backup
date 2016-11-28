@@ -1,31 +1,48 @@
 angular
     .module('taskQL')
-
-    .controller('registrationController', function($scope){
-
-    })
-
-    .controller('loginController', function(Login, $scope, $rootScope, $location) {
+    .controller('mainController', function(mainFactory, $scope, $rootScope, $location) {
+        
         $scope.login = function(){ 
-            Login.getLogin($scope.username, $scope.password).then(function(response){
+        
+            mainFactory.getLogin($scope.username, $scope.password).then(function(response){
+                
                 $rootScope.loginResponse = response.data;
                 $rootScope.sessionToken = response.data.SessionToken;
                 $location.path('dashboard');
-                Login.getAll($rootScope.sessionToken).then(function(response){
+                
+                mainFactory.getAll($rootScope.sessionToken).then(function(response){
+                
                     $rootScope.getAllResponse = response.data;
 
                 }).catch(function(response){
                     //request was not successful
                     //handle the error
-                }); 
+                });
                 
             }).catch(function(response){
                 //request was not successful
                 //handle the error
             });
-        }   
+        }
+        
+        $scope.getSubprojects = function(projectID){
+            
+            mainFactory.getProjectInfo(projectID, $rootScope.sessionToken).then(function(response){
+                
+                $rootScope.getProjectInfoResponse = response.data;
+                $location.path('dashboard_subproject');
+
+            }).catch(function(response){
+                //request was not successful
+                //handle the error
+            }); 
+        }
     })
      
+    .controller('registrationController', function($scope){
+
+    })
+    
     .controller('dashboardController', function($scope) {
         
     })
@@ -34,27 +51,26 @@ angular
         
     })
 
- .controller('nuBeController', function ($scope, $ionicModal) {
+    .controller('nuBeController', function ($scope, $ionicModal) {
 
-     $ionicModal.fromTemplateUrl('templates/nutzungsbedingungen.html', {
-         scope: $scope,
-         animation: 'side-in-up',
-     }).then(function (modal) {
-         $scope.modal = modal;
-     });
-
-     $scope.openModal = function () {
-         $scope.modal.show();
-     };
-
-     $scope.closeModal = function () {
-         $scope.modal.hide();
-     };
-
-     $scope.$on('$destroy', function () {
-         $scope.modal.remove();
-     });
- });
-
+         $ionicModal.fromTemplateUrl('templates/nutzungsbedingungen.html', {
+             scope: $scope,
+             animation: 'side-in-up',
+         }).then(function (modal) {
+             $scope.modal = modal;
+         });
+    
+         $scope.openModal = function () {
+             $scope.modal.show();
+         };
+    
+         $scope.closeModal = function () {
+             $scope.modal.hide();
+         };
+    
+         $scope.$on('$destroy', function () {
+             $scope.modal.remove();
+         })
+    })
 
     
