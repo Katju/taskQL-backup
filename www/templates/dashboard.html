@@ -8,14 +8,19 @@
 
 	        <h1 class="title" >Hallo {{loginResponse.fullname}}!</h1>
 
-                <div class="card">
+                <ion-list>
                     <div class="item item-outline item-calm item-divider">Projects</div>
 
-                    <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects()">
+                    <ion-item ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects()">
                         {{ projects.title }}
                         <p>{{ projects.subprojects }} Subprojects</p>
-                    </div>
-                </div>
+                        <ion-option-button class = "button-assertive">delete</ion-option-button>
+                    </ion-item>
+                </ion-list>
+
+                <div style="height: 20px;" class="spacer"></div>
+
+                <button class="button button-medium button-assertive">+</button>
            
     </ion-content>
 </ion-view>
