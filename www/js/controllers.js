@@ -37,6 +37,18 @@ angular
                 //handle the error
             }); 
         }
+        
+        $scope.rename = function(projectID){
+            
+            mainFactory.renameProject(projectID, $scope.newTitle, $rootScope.sessionToken).then(function(response){
+                
+                $rootScope.renameResponse = response.data;
+
+            }).catch(function(response){
+                //request was not successful
+                //handle the error
+            }); 
+        }
     })
      
     .controller('registrationController', function($scope){
