@@ -5,17 +5,18 @@
             <h1 class="title" align="center"><img src="/img/funnel.png">Projects</h1>
         </ion-header-bar>
 
-	        <form style="" class="list"  ng-controller="mainController">
+	        <form style="" class="list" ng-controller="mainController">
 		        <div style="height: 40px;" class="spacer"></div>
 		        <h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
 
                 <div class="card">
                     <div class="item item-outline item-calm item-divider">Projects</div>
 
-                    <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects()">
-                        {{ projects.title }}
-                        <p>{{ projects.subprojects }} Subprojects</p>
-                    </div>
+                    <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects(projects.id)">
+                        <div>
+                        	{{ projects.title }}
+	                        <p>{{ projects.subprojects }} Subprojects</p>
+                    	</div>
                 </div>
            </form>
            

@@ -8,7 +8,7 @@ angular
                 var url = 'https://alpha.taskql.com/rest/api/1/taskql/login';
                 var loginData = JSON.stringify({username: usernameInput, password: passwordInput});
                 
-                return $http.post(url, loginData, { cache: true});
+                return $http.post(url, loginData);
             },
             
             getAll: function(sessionToken){
@@ -34,5 +34,19 @@ angular
                     }
                 })
             },
+            
+            renameProject: function(projectID, newTitle, sessionToken){
+                var url = 'https://alpha.taskql.com/rest/api/1/project/rename';
+                var renameData = JSON.stringify({projectid: projectID, renameprojecttitle: newTitle});
+                
+                return $http({
+                    method: 'PUT',
+                    url: url,
+                    data: renameData,
+                    headers: {
+                        SessionToken: sessionToken
+                    }
+                })
+            }
         }
      })
