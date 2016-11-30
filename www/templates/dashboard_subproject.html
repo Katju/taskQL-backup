@@ -1,5 +1,5 @@
 <ion-view style="" title="Dashboard_subproject">
-    <ion-content class="has-header" padding="true" overflow-scroll="true">
+    <ion-content class="has-header" padding="true" overflow-scroll="true" ng-controller="mainController">
 
         <ion-header-bar>
             <h1 class="title" align="center"><img src="/img/funnel.png">Subprojects</h1>
@@ -9,6 +9,7 @@
         <div style="height: 40px;" class="spacer"></div>
         <!-- <h1 class="title">Hallo {{loginResponse.fullname}}!</h1> -->
 
+<<<<<<< HEAD
               <div class="card">
                   <div class="item item-outline item-calm item-divider">{{ getProjectInfoResponse.title }}</div>
 
@@ -17,6 +18,26 @@
                   </div>
               </div>
          </form>
+=======
+          <div style="height: 40px;" class="spacer"></div>
+
+		      
+                <ion-list>
+                    <div class="item item-outline item-calm item-divider">Name Hauptprojekt</div>
+
+                    <ion-item class="item item-text-wrap">
+                    davon Subprojekte
+                    <ion-option-button class = "button-assertive">delete</ion-option-button>
+                    <ion-option-button class = "button-energized">rename</ion-option-button>
+                    </ion-item>
+
+                </ion-list>
+
+                <div style="height: 20px;" class="spacer"></div>
+
+                <button class="button button-medium button-assertive">+</button>
+         
+>>>>>>> origin/master
            
     </ion-content>
 </ion-view>

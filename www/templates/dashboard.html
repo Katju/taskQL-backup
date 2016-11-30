@@ -1,17 +1,23 @@
 <ion-view style="" title="Dashboard">
-    <ion-content class="has-header" padding="true" overflow-scroll="true">
+    <ion-content class="has-header" padding="true" overflow-scroll="true" ng-controller="mainController">
 
         <ion-header-bar>
             <h1 class="title" align="center"><img src="/img/funnel.png">Projects</h1>
         </ion-header-bar>
+        <div style="height: 40px;" class="spacer"></div>
 
+<<<<<<< HEAD
 	        <form style="" class="list" ng-controller="mainController">
 		        <div style="height: 40px;" class="spacer"></div>
 		        <h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
+=======
+	        <h1 class="title" >Hallo {{loginResponse.fullname}}!</h1>
+>>>>>>> origin/master
 
-                <div class="card">
+                <ion-list>
                     <div class="item item-outline item-calm item-divider">Projects</div>
 
+<<<<<<< HEAD
                     <div class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects(projects.id)">
                         <div>
                         	{{ projects.title }}
@@ -19,6 +25,19 @@
                     	</div>
                 </div>
            </form>
+=======
+                    <ion-item ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects()">
+                        {{ projects.title }}
+                        <p>{{ projects.subprojects }} Subprojects</p>
+                        <ion-option-button class = "button-assertive">delete</ion-option-button>
+                        <ion-option-button class = "button-energized">rename</ion-option-button>
+                    </ion-item>
+                </ion-list>
+
+                <div style="height: 20px;" class="spacer"></div>
+
+                <button class="button button-medium button-assertive">+</button>
+>>>>>>> origin/master
            
     </ion-content>
 </ion-view>
