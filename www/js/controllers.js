@@ -1,6 +1,6 @@
 angular
     .module('taskQL')
-    .controller('mainController', function(mainFactory, $scope, $rootScope, $location) {
+    .controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup) {
         
         $scope.login = function(){ 
         
@@ -38,11 +38,36 @@ angular
             }); 
         }
         
-        $scope.rename = function(projectID){
+        $scope.renameProject = function(projectID, projectTitle){
+        	
+        	var inputPopup = $ionicPopup.prompt({
+    		   
+        		title: 'Rename Project',
+        		template: 'Enter new name',
+        		inputType: 'text',
+        		inputPlaceholder: projectTitle
+    		   
+        	   	}).then(function(res) {
+        		   
+        	   		if(res) {
+        			   mainFactory.renameProject(projectID, res, $rootScope.sessionToken).then(function(response){
+        				
+        				   //$rootScope.renameResponse = response.data;
+
+        			   }).catch(function(response){
+    		                //request was not successful
+    		                //handle the error
+        			   }); 
+        		   }
+        	 });
+        }
+        
+        $scope.addProject = function(projectID){
             
-            mainFactory.renameProject(projectID, $scope.newTitle, $rootScope.sessionToken).then(function(response){
+            mainFactory.add(projectID, $rootScope.sessionToken).then(function(response){
                 
-                $rootScope.renameResponse = response.data;
+                $rootScope.getProjectInfoResponse = response.data;
+                $location.path('dashboard_subproject');
 
             }).catch(function(response){
                 //request was not successful
