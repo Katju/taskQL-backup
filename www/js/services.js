@@ -47,6 +47,6 @@ angular
                         SessionToken: sessionToken
                     }
                 })
-            }
+            },
         }
      })
