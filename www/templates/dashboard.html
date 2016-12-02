@@ -1,5 +1,5 @@
 <ion-view style="" title="Dashboard">
-    <ion-content class="has-header" padding="true" overflow-scroll="true" ng-controller="mainController">
+    <ion-content class="has-header" padding="true" overflow-scroll="true">
 
         <ion-header-bar>
             <h1 class="title" align="center"><img src="/img/funnel.png">Projects</h1>
@@ -18,12 +18,12 @@
 	                        <p>{{ projects.subprojects }} Subprojects</p>
 	                        
 	                        <ion-option-button class = "button-assertive">delete</ion-option-button>
-                        	<ion-option-button class = "button-energized">rename</ion-option-button>
+                        	<ion-option-button class = "button-energized" ng-click="renameProject(projects.id, projects.title)">rename</ion-option-button>
                     	</div>
                 	</ion-item>	
            </ion-list>
            </form>
-           <button class="button button-medium button-assertive">+</button>
+           <button class="button button-medium button-assertive" ng-click="addProject()">+</button>
     </ion-content>
 </ion-view>
 
