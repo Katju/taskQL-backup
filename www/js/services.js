@@ -17,6 +17,7 @@ angular
                 return $http({
                     method: 'GET',
                     url: url,
+                    cache: false,
                     headers: {
                         SessionToken: sessionToken
                     }
@@ -29,13 +30,14 @@ angular
                 return $http({
                     method: 'GET',
                     url: url+projectID,
+                    cache: false,
                     headers: {
                         SessionToken: sessionToken
                     }
                 })
             },
             
-            renameProject: function(projectID, newTitle, sessionToken){
+            rename: function(projectID, newTitle, sessionToken){
                 var url = 'https://alpha.taskql.com/rest/api/1/project/rename';
                 var renameData = JSON.stringify({projectid: projectID, renameprojecttitle: newTitle});
                 
@@ -43,10 +45,11 @@ angular
                     method: 'PUT',
                     url: url,
                     data: renameData,
+                    cache: false,
                     headers: {
                         SessionToken: sessionToken
                     }
                 })
-            },
+            }
         }
      })

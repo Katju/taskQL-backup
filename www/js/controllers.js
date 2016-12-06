@@ -1,8 +1,8 @@
 angular
     .module('taskQL')
-    .controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup) {
-        
-        $scope.login = function(){ 
+    .controller('mainController', function(mainFactory, $scope, $rootScope, $location, $timeout, $ionicPopup) {
+    	
+	 	$scope.login = function(){ 
         
             mainFactory.getLogin($scope.username, $scope.password).then(function(response){
                 
@@ -10,9 +10,9 @@ angular
                 $rootScope.sessionToken = response.data.SessionToken;
                 $location.path('dashboard');
                 
-                mainFactory.getAll($rootScope.sessionToken).then(function(response){
-                
-                    $rootScope.getAllResponse = response.data;
+               mainFactory.getAll($rootScope.sessionToken).then(function(response){
+                	
+                	$rootScope.getAllResponse = response.data;
 
                 }).catch(function(response){
                     //request was not successful
@@ -39,7 +39,7 @@ angular
         }
         
         $scope.renameProject = function(projectID, projectTitle){
-        	
+
         	var inputPopup = $ionicPopup.prompt({
     		   
         		title: 'Rename Project',
@@ -50,29 +50,19 @@ angular
         	   	}).then(function(res) {
         		   
         	   		if(res) {
-        			   mainFactory.renameProject(projectID, res, $rootScope.sessionToken).then(function(response){
-        				
-        				   //$rootScope.renameResponse = response.data;
+	
+        	   			mainFactory.rename(projectID, res, $rootScope.sessionToken);
+        	   			mainFactory.getAll($rootScope.sessionToken).then(function(response){
 
-        			   }).catch(function(response){
-    		                //request was not successful
-    		                //handle the error
-        			   }); 
+        	   					$rootScope.getAllResponse = response.data;
+
+                        }).catch(function(response){
+                            // request was not successful
+                            // handle the error
+                        });
+        	   			
         		   }
         	 });
-        }
-        
-        $scope.addProject = function(projectID){
-            
-            mainFactory.add(projectID, $rootScope.sessionToken).then(function(response){
-                
-                $rootScope.getProjectInfoResponse = response.data;
-                $location.path('dashboard_subproject');
-
-            }).catch(function(response){
-                //request was not successful
-                //handle the error
-            }); 
         }
     })
      

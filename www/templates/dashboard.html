@@ -12,13 +12,13 @@
 		        <h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
 
                     <div class="item item-outline item-calm item-divider">Projects</div>
-					<ion-item class="item item-text-wrap" ng-repeat="projects in getAllResponse.projects" ng-click="getSubprojects(projects.id)">
+					<ion-item class="item item-text-wrap" ng-repeat="project in getAllResponse.projects" ng-click="getSubprojects(project.id)">
                         <div>
-                        	{{ projects.title }}
-	                        <p>{{ projects.subprojects }} Subprojects</p>
+                        	{{ project.title }}
+	                        <p>{{ project.subprojects }} Subprojects</p>
 	                        
 	                        <ion-option-button class = "button-assertive">delete</ion-option-button>
-                        	<ion-option-button class = "button-energized" ng-click="renameProject(projects.id, projects.title)">rename</ion-option-button>
+                        	<ion-option-button class = "button-energized" ng-click="renameProject(project.id, project.title)">rename</ion-option-button>
                     	</div>
                 	</ion-item>	
            </ion-list>
