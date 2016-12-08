@@ -1,25 +1,35 @@
-<ion-view style="" title="Dashboard">
-    <ion-content class="has-header" padding="true" overflow-scroll="true">
+<ion-view style="" title="Dashboard"> <ion-content
+	class="has-header" padding="true" overflow-scroll="true">
 
-        <ion-header-bar>
-            <h1 class="title" align="center"><img src="/img/funnel.png">Projects</h1>
-        </ion-header-bar>
-	        
-	        <form style="" class="list"  ng-controller="dashboardController">
+<ion-header-bar>
+<h1 class="title" align="center">
+	<img src="/img/funnel.png" alt="">Projects
+</h1>
+</ion-header-bar>
+<div style="height: 40px;" class="spacer"></div>
 
-		        <div style="height: 40px;" class="spacer"></div>
-		        	<h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
+<form style="" class="list" ng-controller="mainController" action="">
+	<ion-list>
+	<div style="height: 40px;" class="spacer"></div>
+	<h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
 
-	            <label style="" class="item item-select" ng-controller="dashboardController">
-	                <span class="input-label">Projects {{project.title}}</span>
-	                <select ng-model="option">
-	                    <option>subproject 1</option>
-	                    <option>subproject 2</option>
-	                </select>
-	            </label>
+	<div class="item item-outline item-calm item-divider">Projects</div>
+	<ion-item class="item item-text-wrap"
+		ng-repeat="project in getAllRes.projects"
+		ng-click="getSubprojects(project.id)">
+	<div>
+		{{ project.title }}
+		<p>{{ project.subprojects }} Subprojects</p>
 
-           </form>
-           
-    </ion-content>
-</ion-view>
+		<ion-option-button class="button-assertive"
+			ng-click="deleteProject(project.id, project.title)">delete</ion-option-button>
+		<ion-option-button class="button-energized"
+			ng-click="renameProject(project.id, project.title)">rename</ion-option-button>
+	</div>
+	</ion-item> </ion-list>
+	<div style="height: 40px;" class="spacer"></div>
+		<button type="submit" class="button button-balanced"
+		ng-click="addProject()">+</button>
+</form>
 
+</ion-content> </ion-view>

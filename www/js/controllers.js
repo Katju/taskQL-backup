@@ -27,8 +27,12 @@ angular
 	
 		$scope.getSubprojects = function(projectID){
 	
+<<<<<<< HEAD
 			request = projectID;
 			mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/',projectID).then(function(response){
+=======
+			mainFactory.getProjectInfoReq(projectID, $rootScope.sessionToken).then(function(response){
+>>>>>>> master
 	
 				$rootScope.getProjectInfoRes = response.data;
 				$location.path('dashboard_subproject');
@@ -51,11 +55,16 @@ angular
 			}).then(function(res) {
 	
 				if(res) {
+<<<<<<< HEAD
 					var request = JSON.stringify({
 						projectid : projectID,
 						renameprojecttitle : res
 					});
 					mainFactory.genericReq($rootScope.sessionToken, "PUT", 'https://alpha.taskql.com/rest/api/1/project/rename', request);
+=======
+	
+					mainFactory.renameProjectReq(projectID, res, $rootScope.sessionToken);
+>>>>>>> master
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 	
 						$rootScope.getAllRes = response.data;
@@ -102,11 +111,17 @@ angular
 				inputType: 'text',
 	
 			}).then(function(res) {
+<<<<<<< HEAD
 				if(res) {
 					var request = JSON.stringify({
 						addprojecttitle : res
 					});
 					mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/project/add', request);
+=======
+	
+				if(res) {
+					mainFactory.addProjectReq(res,  $rootScope.sessionToken);
+>>>>>>> master
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 						
 						$rootScope.getAllRes = response.data;
