@@ -89,7 +89,6 @@ angular
 							SessionToken : sessionToken
 						}
 					})
-<<<<<<< HEAD
 				},
 				
 				genericReq: function(sessionToken, method, url, request) {
@@ -117,8 +116,6 @@ angular
 					else {
 						console.log("unerlaubte HTTP-Methode")
 					}
-=======
->>>>>>> master
 				}
 			}
 		})
