@@ -89,6 +89,33 @@ angular
 							SessionToken : sessionToken
 						}
 					})
+				},
+				
+				genericReq: function(sessionToken, method, url, request) {
+					if (method == "GET" || method == "DELETE") {
+						return $http({
+							method : method,
+							url : url + request,
+							cache : false,
+							headers : {
+								SessionToken: sessionToken
+							}
+						})
+					}
+					else if (method == "PUT" || method == "POST") {
+						return $http({
+							method : method,
+							url: url,
+							cache: false,
+							data: request,
+							headers : {
+								SessionToken : sessionToken
+							}							
+						})
+					}
+					else {
+						console.log("unerlaubte HTTP-Methode")
+					}
 				}
 			}
 		})
