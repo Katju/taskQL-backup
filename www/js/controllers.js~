@@ -102,11 +102,9 @@ angular
 				inputType: 'text',
 	
 			}).then(function(res) {
+	
 				if(res) {
-					var request = JSON.stringify({
-						addprojecttitle : res
-					});
-					mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/project/add', request);
+					mainFactory.addProjectReq(res,  $rootScope.sessionToken);
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 						
 						$rootScope.getAllRes = response.data;

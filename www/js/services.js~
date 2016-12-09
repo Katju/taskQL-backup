@@ -90,7 +90,6 @@ angular
 						}
 					})
 				},
-				
 				genericReq: function(sessionToken, method, url, request) {
 					if (method == "GET" || method == "DELETE") {
 						return $http({
