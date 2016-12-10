@@ -2,7 +2,7 @@ angular
 	.module('taskQL')
 	.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $timeout, $ionicPopup) {
 	
-		$scope.login = function(){ 
+		$scope.login = function(){
 	
 			mainFactory.getLoginReq($scope.username, $scope.password).then(function(response){
 	
@@ -26,9 +26,8 @@ angular
 		}
 	
 		$scope.getSubprojects = function(projectID){
-	
-			request = projectID;
-			mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/',projectID).then(function(response){
+
+			mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', projectID).then(function(response){
 	
 				$rootScope.getProjectInfoRes = response.data;
 				$location.path('dashboard_subproject');
@@ -55,6 +54,7 @@ angular
 						projectid : projectID,
 						renameprojecttitle : res
 					});
+					
 					mainFactory.genericReq($rootScope.sessionToken, "PUT", 'https://alpha.taskql.com/rest/api/1/project/rename', request);
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 	
@@ -64,7 +64,6 @@ angular
 						// request was not successful
 						// handle the error
 					});
-	
 				}
 			});
 		}
@@ -74,13 +73,13 @@ angular
 			var deletePopup = $ionicPopup.confirm({
 				
 				title: 'Delete ' + projectTitle,
-				template: 'Are you sure you want to delete the project?',
+				template: 'Are you sure you want to delete the project?'
 			}).
 			
 			then(function(res) {
 				
 				if(res) {
-					mainFactory.deleteProjectReq(projectID, $rootScope.sessionToken);
+					mainFactory.genericReq($rootScope.sessionToken, "DELETE", 'https://alpha.taskql.com/rest/api/1/project/delete/', projectID);
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 
 						$rootScope.getAllRes = response.data;
@@ -102,10 +101,12 @@ angular
 				inputType: 'text',
 	
 			}).then(function(res) {
-				if(res) {
+				
+				if(res) {					
 					var request = JSON.stringify({
 						addprojecttitle : res
 					});
+					
 					mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/project/add', request);
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 						

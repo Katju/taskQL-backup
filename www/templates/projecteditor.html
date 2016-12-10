@@ -1,14 +1,24 @@
-<ion-view style="" title="project">
-    <ion-content class="has-header" padding="true" overflow-scroll="true">
+<ion-view style="" title="project ng-controller="projecteditorController""> <ion-content
+	class="has-header" padding="true" overflow-scroll="true">
 
-        <ion-header-bar>
-            <h1 class="title" align="center">hier kommt später der Projektname hin</h1>
-        </ion-header-bar>
+<ion-header-bar>
+<h1 class="title" align="center">{{ getSubprojectInfoRes.title }}</h1>
+</ion-header-bar>
 
-	        <div style="height: 40px;" class="spacer"></div>
+<div style="height: 40px;" class="spacer"></div>
 
-	   
-
-    </ion-content>
-</ion-view>
-
+<ion-item> <ion-label>{{
+	getSubprojectInfoRes.title }}</ion-label> <ion-textarea rows="20">{{
+	getSubprojectInfoRes.text }}</ion-textarea>
+	<div
+		ui-ace="{
+	  useWrapMode : true,
+	  showGutter: false,
+	  theme:'twilight',
+	  mode: 'xml',
+	  firstLineNumber: 5,
+	  onLoad: aceLoaded,
+	  onChange: aceChanged
+	}">
+	</div>
+</ion-item> </ion-content> </ion-view>
