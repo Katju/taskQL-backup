@@ -26,12 +26,7 @@ angular
 		}
 	
 		$scope.getSubprojects = function(projectID){
-<<<<<<< HEAD
 
-=======
-	
-			request = projectID;
->>>>>>> master
 			mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', projectID).then(function(response){
 	
 				$rootScope.getProjectInfoRes = response.data;
@@ -84,11 +79,7 @@ angular
 			then(function(res) {
 				
 				if(res) {
-<<<<<<< HEAD
 					mainFactory.genericReq($rootScope.sessionToken, "DELETE", 'https://alpha.taskql.com/rest/api/1/project/delete/', projectID);
-=======
-					mainFactory.genericReq($rootScope.sessionToken, "DELETE", 'https://alpha.taskql.com/rest/api/1/project/delete', projectID);
->>>>>>> master
 					mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
 
 						$rootScope.getAllRes = response.data;
