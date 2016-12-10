@@ -15,8 +15,9 @@
 		<div class="item item-outline item-calm item-divider">{{
 			getProjectInfoRes.title }}</div>
 		<ion-item class="item item-text-wrap"
-			ng-repeat="subprojects in getProjectInfoRes.subprojects">
-		{{ subprojects.title }} <ion-option-button class="button-assertive">delete</ion-option-button>
+			ng-repeat="subproject in getProjectInfoRes.subprojects"
+			ng-click="openSubproject(subproject.idex)">
+		{{ subproject.title }} <ion-option-button class="button-assertive">delete</ion-option-button>
 		<ion-option-button class="button-energized">rename</ion-option-button>
 	
 		</ion-item> </ion-list>
