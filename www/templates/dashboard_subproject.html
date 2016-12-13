@@ -1,30 +1,38 @@
-<ion-view style="" title="Dashboard"> <ion-content
-	class="has-header" padding="true" overflow-scroll="true">
+<ion-view style="" title="Dashboard"> 
+<ion-content class="has-header" padding="true" overflow-scroll="true">
 
-<ion-header-bar>
-<h1 class="title" align="center">
-	<img src="/img/funnel.png" alt="">Subprojects
-</h1>
-</ion-header-bar>
-<div style="height: 40px;" class="spacer"></div>
+    <ion-header-bar>
+        <h1 class="title" align="center">
+	   <img src="/img/funnel.png" alt="">Subprojects</h1>
+    </ion-header-bar>
 
-<form style="" class="list" ng-controller="mainController" action="">
-	<ion-list>
-	<div class="item item-outline item-calm item-divider">{{ getProjectInfoRes.title }}</div>
-	<ion-item class="item item-text-wrap"
-		ng-repeat="subproject in getProjectInfoRes.subprojects"
-		ng-click="openSubproject(subproject.idex, subproject.title)">
-	<div>
-		{{ subproject.title }}
-		<ion-option-button class="button-assertive"
-			ng-click="deleteProject()">delete</ion-option-button>
-		<ion-option-button class="button-energized"
-			ng-click="renameProject()">rename</ion-option-button>
-	</div>
-	</ion-item> </ion-list>
+    <div style="height: 40px;" class="spacer"></div>
+
+        <form style="" class="list" ng-controller="mainController" action="">
+	       <ion-list>
+	           <div class="item item-outline item-calm item-divider">{{ getProjectInfoRes.title }}</div>
+
+	               <ion-item class="item item-text-wrap"
+		              ng-repeat="subproject in getProjectInfoRes.subprojects"
+		              ng-click="openSubproject(subproject.idex, subproject.title)">
+	               		{{ subproject.title }}
+		
+                        <ion-option-button class="button-assertive" ng-click="deleteProject()">delete</ion-option-button>
+                        <ion-option-button class="button-energized" ng-click="renameProject()">rename</ion-option-button>
+
+                        <div class="item-icon-right">
+                            <i class="icon ion-chevron-left"></i>
+                        </div>
+	
+
+	               </ion-item> 
+            </ion-list>
+
 	<div style="height: 40px;" class="spacer"></div>
-		<button type="submit" class="button button-balanced"
-		ng-click="addProject()">+</button>
-</form>
 
-</ion-content> </ion-view>
+	   <button type="submit" class="button button-balanced" ng-click="addProject()">+</button>
+
+        </form>
+
+</ion-content> 
+</ion-view>
