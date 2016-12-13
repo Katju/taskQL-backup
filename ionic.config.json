@@ -1,13 +1,19 @@
 {
   "name": "taskQL",
   "app_id": "",
-  "gulpStartupTasks": [
-    "sass",
-    "watch"
-  ],
-  "watchPatterns": [
-    "www/**/*",
-    "!www/lib/**/*",
-    "!www/**/*.map"
-  ]
+  "v2": false,
+  "typescript": false,
+  "watch": {
+    "sass": [ 
+      "scss/**/*.scss"
+    ],
+    "html":[
+      "www/**/*.html"
+    ],
+    "livereload": [
+      "www/**/*.html",
+      "www/**/*.js",
+      "www/**/*.css"
+    ]
+  }
 }
