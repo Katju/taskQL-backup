@@ -1,24 +1,24 @@
-<ion-view style="" title="project ng-controller="editorController""> <ion-content
+<ion-view style="" title="Editor"> <ion-content
 	class="has-header" padding="true" overflow-scroll="true">
-
 <ion-header-bar>
-<h1 class="title" align="center">{{ getSubprojectInfoRes.title }}</h1>
+<h1 class="title" align="center">
+	<img src="/img/funnel.png" alt="">Editor
+</h1>
 </ion-header-bar>
+<form style="" class="list" ng-controller="mainController" action="">
 
-<div style="height: 40px;" class="spacer"></div>
+	<div style="height: 40px;" class="spacer"></div>
 
-<ion-item> <ion-label>{{
-	getSubprojectInfoRes.title }}</ion-label> <ion-textarea rows="20">{{
-	getSubprojectInfoRes.text }}</ion-textarea>
-	<div
-		ui-ace="{
-	  useWrapMode : true,
-	  showGutter: false,
-	  theme:'twilight',
-	  mode: 'xml',
-	  firstLineNumber: 5,
-	  onLoad: aceLoaded,
-	  onChange: aceChanged
-	}">
-	</div>
-</ion-item> </ion-content> </ion-view>
+	<ion-list>
+	<div class="item item-outline item-calm item-divider">
+	{{ getSubprojectInfoRes.title }}</div>
+		<ion-item class="item item-text-wrap"
+			<div ui-ace="{ onLoad: aceLoaded }" style="height: 500px; width: 100%" data-tap-disabled="true">
+				<pre id="editor"></pre>
+			</div>
+		</ion-item>
+	</ion-list>
+
+</form>
+
+</ion-content> </ion-view>

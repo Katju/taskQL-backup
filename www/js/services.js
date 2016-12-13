@@ -52,6 +52,7 @@ angular
 							}							
 						})
 					}
+					
 					else {
 						console.log("unerlaubte HTTP-Methode")
 					}

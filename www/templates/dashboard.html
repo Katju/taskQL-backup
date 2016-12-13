@@ -9,9 +9,9 @@
 <div style="height: 40px;" class="spacer"></div>
 
 <form style="" class="list" ng-controller="mainController" action="">
+	<h3>Hallo {{loginResponse.fullname}}!</h3>
+	<h5>Du hast {{ getAllRes.count }} Projekte.</h5>
 	<ion-list>
-	   <div style="height: 40px;" class="spacer"></div>
-	       <h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
 
 	   <div class="item item-outline item-calm item-divider">Projects</div>
 
@@ -34,7 +34,7 @@
 
 	   </ion-item>
 
-    </ion-list>
+</ion-list>
 
 	<div style="height: 40px;" class="spacer"></div>
 		<button type="submit" class="button button-balanced"
