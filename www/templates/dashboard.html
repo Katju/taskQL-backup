@@ -9,7 +9,10 @@
 <div style="height: 40px;" class="spacer"></div>
 
 <form style="" class="list" ng-controller="mainController" action="">
+	<h3>Hallo {{loginResponse.fullname}}!</h3>
+	<h5>Du hast {{ getAllRes.count }} Projekte.</h5>
 	<ion-list>
+<<<<<<< Updated upstream
 	   <div style="height: 40px;" class="spacer"></div>
 	       <h1 class="title">Hallo {{loginResponse.fullname}}!</h1>
 
@@ -36,6 +39,22 @@
 
     </ion-list>
 
+=======
+
+	<div class="item item-outline item-calm item-divider">Projects</div>
+	<ion-item class="item item-text-wrap"
+		ng-repeat="project in getAllRes.projects"
+		ng-click="getSubprojects(project.id)">
+	<div>
+		{{ project.title }}
+		<p>{{ project.subprojects }} Subprojects</p>
+		<ion-option-button class="button-assertive"
+			ng-click="deleteProject(project.id, project.title)">delete</ion-option-button>
+		<ion-option-button class="button-energized"
+			ng-click="renameProject(project.id, project.title)">rename</ion-option-button>
+	</div>
+	</ion-item> </ion-list>
+>>>>>>> Stashed changes
 	<div style="height: 40px;" class="spacer"></div>
 		<button type="submit" class="button button-balanced"
 		ng-click="addProject()">+</button>
