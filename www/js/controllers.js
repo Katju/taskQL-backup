@@ -122,6 +122,26 @@ angular
 		});
 	}
 	
+	$scope.openSubproject = function(subprojectID, subprojectTitle){
+
+		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/subproject/getInfoByIdEx/', subprojectID).then(function(response){
+
+			$rootScope.getSubprojectInfoRes = response.data;
+			$rootScope.editorText = $rootScope.getSubprojectInfoRes.text;
+			$location.path('projecteditor');
+
+		}).catch(function(response){
+			// request was not successful
+			// handle the error
+		}); 
+	}
+	
+	$scope.aceLoaded = function(editor) {
+	    // Options
+	    editor.setReadOnly(false);
+	    editor.setValue($rootScope.editorText, 1);
+	}
+	
 })
 
 .controller('registrationController', function($scope) {

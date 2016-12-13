@@ -13,7 +13,9 @@
 	<div class="item item-outline item-calm item-divider">
 	{{ getSubprojectInfoRes.title }}</div>
 		<ion-item class="item item-text-wrap"
-			
+			<div ui-ace="{ onLoad: aceLoaded }" style="height: 500px; width: 100%" data-tap-disabled="true">
+				<pre id="editor"></pre>
+			</div>
 		</ion-item>
 	</ion-list>
 
