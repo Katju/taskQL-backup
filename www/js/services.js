@@ -28,67 +28,33 @@ angular
 						}
 					})
 				},
-
-				getProjectInfoReq : function(projectID, sessionToken) {
-					var url = 'https://alpha.taskql.com/rest/api/1/project/getInfoById/';
-
-					return $http({
-						method : 'GET',
-						url : url + projectID,
-						cache : false,
-						headers : {
-							SessionToken : sessionToken
-						}
-					})
-				},
-
-				renameProjectReq : function(projectID, newTitle,
-						sessionToken) {
-					var url = 'https://alpha.taskql.com/rest/api/1/project/rename';
-					var renameData = JSON.stringify({
-						projectid : projectID,
-						renameprojecttitle : newTitle
-					});
-
-					return $http({
-						method : 'PUT',
-						url : url,
-						data : renameData,
-						cache : false,
-						headers : {
-							SessionToken : sessionToken
-						}
-					})
-				},
 				
-				deleteProjectReq : function(projectID, sessionToken) {
-					var url = 'https://alpha.taskql.com/rest/api/1/project/delete/';
-
-					return $http({
-						method : 'DELETE',
-						url : url + projectID,
-						cache : false,
-						headers : {
-							SessionToken : sessionToken
-						}
-					})
-				},
-				
-				addProjectReq : function(title, sessionToken) {
-					var url = 'https://alpha.taskql.com/rest/api/1/project/add';
-					var addData = JSON.stringify({
-						addprojecttitle : title
-					});
+				genericReq: function(sessionToken, method, url, request) {
+					if (method == "GET" || method == "DELETE") {
+						return $http({
+							method : method,
+							url : url + request,
+							cache : false,
+							headers : {
+								SessionToken: sessionToken
+							}
+						})
+					}
 					
-					return $http({
-						method : 'POST',
-						url : url,
-						data: addData,
-						cache : false,
-						headers : {
-							SessionToken : sessionToken
-						}
-					})
+					else if (method == "PUT" || method == "POST") {
+						return $http({
+							method : method,
+							url: url,
+							data: request,
+							cache: false,
+							headers : {
+								SessionToken : sessionToken
+							}							
+						})
+					}
+					else {
+						console.log("unerlaubte HTTP-Methode")
+					}
 				}
 			}
 		})
