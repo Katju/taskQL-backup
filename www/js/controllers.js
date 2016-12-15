@@ -25,19 +25,6 @@ angular
 		});
 	}
 
-	$scope.getSubprojects = function(projectID){
-
-		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', projectID).then(function(response){
-
-			$rootScope.getProjectInfoRes = response.data;
-			$location.path('dashboard_subproject');
-
-		}).catch(function(response){
-			// request was not successful
-			// handle the error
-		}); 
-	}
-
 	$scope.renameProject = function(projectID, projectTitle){
 
 		var renameInput = $ionicPopup.prompt({
@@ -67,7 +54,35 @@ angular
 			}
 		});
 	}
+	
+	$scope.addProject = function(){
 
+		var addInput = $ionicPopup.prompt({
+
+			title: 'Add Project',
+			template: 'Enter new project name',
+			inputType: 'text',
+
+		}).then(function(res) {
+
+			if(res) {					
+				var request = JSON.stringify({
+					addprojecttitle : res
+				});
+
+				mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/project/add', request);
+				mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
+
+					$rootScope.getAllRes = response.data;
+					
+				}).catch(function(response){
+					// request was not successful
+					// handle the error
+				});
+			}
+		});
+	}
+	
 	$scope.deleteProject = function(projectID, projectTitle){
 
 		var deletePopup = $ionicPopup.confirm({
@@ -91,28 +106,71 @@ angular
 			}
 		});
 	}
+	
+	$scope.getSubprojects = function(projectID){
 
-	$scope.addProject = function(){
+		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', projectID).then(function(response){
+
+			$rootScope.getProjectInfoRes = response.data;
+			$rootScope.pID = projectID;
+			$location.path('dashboard_subproject');
+
+		}).catch(function(response){
+			// request was not successful
+			// handle the error
+		});
+	}
+	
+	$scope.renameSubproject = function(subprojectIDEX, subprojectTitle){
+
+		var renameInput = $ionicPopup.prompt({
+
+			title: 'Rename Subproject',
+			template: 'Enter new name',
+			inputType: 'text',
+			inputPlaceholder: subprojectTitle
+
+		}).then(function(res) {
+
+			if(res) {
+				var request = JSON.stringify({
+					title: res,
+					projectid: $scope.pID,
+					idex: subprojectIDEX
+				});
+
+				mainFactory.genericReq($rootScope.sessionToken, "PUT", 'https://alpha.taskql.com/rest/api/1/subproject/rename', request);
+				mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', $rootScope.pID).then(function(response){
+
+					$rootScope.getProjectInfoRes = response.data;
+
+				}).catch(function(response){
+					// request was not successful
+					// handle the error
+				});
+			}
+		});
+	}
+
+	$scope.addSubproject = function(){
 
 		var addInput = $ionicPopup.prompt({
 
-			title: 'Add Project',
-			template: 'Enter new project name',
+			title: 'Add Subproject',
+			template: 'Enter new Subproject name',
 			inputType: 'text',
 
 		}).then(function(res) {
 
 			if(res) {					
 				var request = JSON.stringify({
-
-					addprojecttitle : res
+					subprojecttitle : res
 				});
 
-				mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/project/add', request);
-				mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
+				mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/subproject/add', request);
+				mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', $rootScope.pID).then(function(response){
 
-					$rootScope.getAllRes = response.data;
-					
+					$rootScope.getProjectInfoRes = response.data;
 
 				}).catch(function(response){
 					// request was not successful
@@ -122,9 +180,33 @@ angular
 		});
 	}
 	
-	$scope.openSubproject = function(subprojectID, subprojectTitle){
+	$scope.deleteSubproject = function(subprojectIDEX, subprojectTitle){
 
-		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/subproject/getInfoByIdEx/', subprojectID).then(function(response){
+		var deletePopup = $ionicPopup.confirm({
+
+			title: 'Delete ' + subprojectTitle,
+			template: 'Are you sure you want to delete the subproject?'
+		}).
+
+		then(function(res) {
+
+			if(res) {
+				mainFactory.genericReq($rootScope.sessionToken, "DELETE", 'https://alpha.taskql.com/rest/api/1/subproject/delete/', $scope.pID +"/"+subprojectIDEX);
+				mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', $rootScope.pID).then(function(response){
+
+					$rootScope.getProjectInfoRes = response.data;
+
+				}).catch(function(response){
+					// request was not successful
+					// handle the error
+				});
+			}
+		});
+	}
+	
+	$scope.openSubproject = function(subprojectIDEX, subprojectTitle){
+
+		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/subproject/getInfoByIdEx/', subprojectIDEX).then(function(response){
 
 			$rootScope.getSubprojectInfoRes = response.data;
 			$rootScope.editorText = $rootScope.getSubprojectInfoRes.text;
@@ -145,10 +227,6 @@ angular
 })
 
 .controller('registrationController', function($scope) {
-
-})
-
-.controller('dashboardController', function($scope) {
 
 })
 
