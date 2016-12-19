@@ -23,10 +23,8 @@
 		      {{ project.title }}
 		      <p>{{ project.subprojects }} Subprojects</p>
 
-		      <ion-option-button class="button-assertive"
-			     ng-click="deleteProject(project.id, project.title)">delete</ion-option-button>
-		      <ion-option-button class="button-energized"
-			     ng-click="renameProject(project.id, project.title)">rename</ion-option-button>
+		      <ion-option-button class="button-assertive" ng-click="deleteProject(project.id, project.title)">delete</ion-option-button>
+		      <ion-option-button class="button-energized" ng-click="renameProject(project.id, project.title)">rename</ion-option-button>
 	     
            <div class="item-icon-right">
             <i class="icon ion-chevron-left"></i>
@@ -37,8 +35,7 @@
 </ion-list>
 
 	<div style="height: 40px;" class="spacer"></div>
-		<button type="submit" class="button button-balanced"
-		ng-click="addProject()">+</button>
+		<button type="submit" class="button button-balanced" ng-click="addProject()">+</button>
 
 </form>
 
