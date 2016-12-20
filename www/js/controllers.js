@@ -1,6 +1,6 @@
 angular
 .module('taskQL')
-.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup) {
+.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory) {
     
 	$scope.login = function(){
 
@@ -222,6 +222,11 @@ angular
 	    // Options
 	    editor.setReadOnly(false);
 	    editor.setValue($rootScope.editorText, 1);
+	}
+
+	$scope.back = function(){
+		$ionicHistory.goBack()
+
 	}
 	
 })
