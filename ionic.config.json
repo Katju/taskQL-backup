@@ -1,13 +1,14 @@
 {
   "name": "taskQL",
-  "app_id": "",
+  "app_id": "02ca1764",
+  "api_key": "1f47d921b02db3dea1a944bbd545245df6855cdbc1ccd75d",
   "v2": false,
   "typescript": false,
   "watch": {
-    "sass": [ 
+    "sass": [
       "scss/**/*.scss"
     ],
-    "html":[
+    "html": [
       "www/**/*.html"
     ],
     "livereload": [
