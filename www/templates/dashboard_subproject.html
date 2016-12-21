@@ -1,11 +1,10 @@
-<ion-view style="" title="Subprojects"> 
+<ion-view style="" title="Subprojects" ng-controller="mainController"> 
 
-<ion-nav-bar ng-controller="mainController">
+<ion-nav-bar>
 
 	<ion-nav-buttons side="primary">
 		<button class="button icon ion-chevron-left" ng-click="back()"></button>
 	</ion-nav-buttons>
-	
 
 	<ion-nav-buttons side="secondary">
 		<button class="button icon ion-navicon"></button>
@@ -13,13 +12,8 @@
 	
 </ion-nav-bar>
 	
-<ion-content overflow-scroll="true" ng-controller="mainController">
+<ion-content overflow-scroll="true">
 
-<<<<<<< Updated upstream
-         <form style="" class="list" action="">
-=======
-        <form style="" class="list" action="">
->>>>>>> Stashed changes
 	       <ion-list>
 	           <div class="item item-calm item-divider">{{ getProjectInfoRes.title }}</div>
 

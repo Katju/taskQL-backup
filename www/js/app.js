@@ -38,9 +38,8 @@ angular
     })
 
     .state('login', {
-      url:'templates/login.html',
-      templateUrl: 'templates/login.html',
-      controller: 'mainController'
+      url:'/login',
+      templateUrl: 'templates/login.html'
     })
 
     .state('dashboard', {
