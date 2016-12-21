@@ -226,7 +226,6 @@ angular
 
 	$scope.back = function(){
 		$ionicHistory.goBack()
-
 	}
 	
 })
