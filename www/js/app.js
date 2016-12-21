@@ -39,7 +39,7 @@ angular
 
     .state('login', {
       url:'/login',
-      templateUrl: 'templates/login.html',
+      templateUrl: 'templates/login.html'
     })
 
     .state('dashboard', {
@@ -54,7 +54,7 @@ angular
 
     .state('projecteditor', {
       url:'/projecteditor',
-      templateUrl: 'templates/projecteditor.html',
+      templateUrl: 'templates/projecteditor.html'
     });
 
     $urlRouterProvider.otherwise('/login');
