@@ -1,6 +1,6 @@
-<ion-view style="" title="Subprojects"> 
+<ion-view> 
 
-<ion-nav-bar ng-controller="mainController">
+<ion-nav-bar class="mynavbar" ng-controller="mainController">
 
 	<ion-nav-buttons side="primary">
 		<button class="button icon ion-chevron-left" ng-click="back()"></button>
@@ -12,8 +12,13 @@
 	</ion-nav-buttons>
 	
 </ion-nav-bar>
+
+<ion-nav-title>
+    <img alt="taskQL" height="30" src="/img/funnel.png">
+    Subrojects
+</ion-nav-title>
 	
-<ion-content overflow-scroll="true" ng-controller="mainController">
+<ion-content padding="true" overflow-scroll="true" ng-controller="mainController">
 
          <form style="" class="list" action="">
 	       <ion-list>
