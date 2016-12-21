@@ -2,7 +2,7 @@ angular
 .module('taskQL')
 .controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory) {
     
-	$scope.login = function(){
+	$scope.logIn = function(){
 
 		mainFactory.getLoginReq($scope.username, $scope.password).then(function(response){
 
