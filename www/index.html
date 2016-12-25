@@ -19,7 +19,6 @@
 <script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
 <script src="lib/angular/angular.js"></script>
 <script src="lib/angular-ui-ace/ui-ace.js"></script>
-<script src="lib/ionic-sidemenu/ionic-sidemenu.bundle.min.js"></script>
 
 </head>
 
@@ -37,15 +36,39 @@
 
 	</ion-side-menu-content>
 
+
 	<ion-side-menu side="right">
 
 		<ion-header-bar class="bar-calm">
 			<h1 class="title">Menu</h1>
 		</ion-header-bar>
 
-		<ion-content ng-controller="sideMenuController" ng-class="theme">
+		<ion-content>
 			<ion-list>
-				<ionic-sidemenu tree="tree"></ionic-sidemenu>	
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+					language
+					</div>
+
+					<select>
+					<option>deutsch</option>
+					<option>englisch</option>
+					</select>
+				</label>
+
+				<ion-item menu-close>
+				filter
+				</ion-item>
+
+				<ion-item menu-close>
+				calender
+				</ion-item>
+
+				<ion-item menu-close>
+				logout
+				</ion-item>
+
 			</ion-list>
 		</ion-content>
 	</ion-side-menu>

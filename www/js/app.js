@@ -1,5 +1,5 @@
 angular
-.module('taskQL', ['ionic', 'ui.ace', 'ionic-sidemenu'])
+.module('taskQL', ['ionic', 'ui.ace'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
