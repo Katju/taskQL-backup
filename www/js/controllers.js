@@ -1,6 +1,6 @@
 angular
 .module('taskQL')
-.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory) {
+.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory, $ionicSideMenuDelegate) {
     
 	$scope.login = function(){
 
@@ -227,7 +227,42 @@ angular
 	$scope.back = function(){
 		$ionicHistory.goBack()
 	}
+
+	$scope.toggleRight = function(){
+		$ionicSideMenuDelegate.toggleRight();
+	}
 	
+})
+
+.controller('sideMenuController', function($scope){
+	$scope.theme = 'theme';
+	$scope.tree =
+	[{
+		id:1,
+		level:0,
+		name:'select Language ',
+		items: [{
+			id:10,
+			level:1,
+			name:'English'
+			},{
+			id:10,
+			level:1,
+			name:'German'	
+			}]
+		}, {
+		id:2,
+		level:0,
+		name:'filter'
+		},{
+		id:3,
+		level:0,
+		name:'calender'	
+		},{
+		id:4,
+		level:0,
+		name:'logout'	
+		}];
 })
 
 .controller('registrationController', function($scope) {
