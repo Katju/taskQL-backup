@@ -1,16 +1,21 @@
-<ion-view style="" title="Projects"  ng-controller="mainController"> 
+<ion-view> 
 
-<ion-nav-bar>
+<ion-nav-bar class="mynavbar" ng-controller="mainController">
 
 	<ion-nav-buttons side="secondary">
-		<button class="button icon ion-navicon"></button>
+		<button class="button icon ion-navicon" ng-click="toggleRight()"></button>
 	</ion-nav-buttons>
 
 </ion-nav-bar>
 
+<ion-nav-title>
+    <img alt="taskQL" height="30" src="/img/funnel.png">
+    Projects
+</ion-nav-title>
+
 <ion-content overflow-scroll="true">
 
-<form style="" class="list" action="">
+<form style="" class="list" ng-controller="mainController" action="">
 	<h3>Hallo {{loginResponse.fullname}}!</h3>
 	<h5>Du hast {{ getAllRes.count }} Projekte.</h5>
 
