@@ -1,24 +1,36 @@
-<ion-view style="" title="Dashboard"> 
-<ion-content class="has-header" padding="true" overflow-scroll="true">
+<ion-view> 
 
-    <ion-header-bar>
-        <h1 class="title" align="center">
-	   <img src="/img/funnel.png" alt="">Subprojects</h1>
-    </ion-header-bar>
+<ion-nav-bar class="mynavbar" ng-controller="mainController">
 
-    <div style="height: 40px;" class="spacer"></div>
+	<ion-nav-buttons side="primary">
+		<button class="button icon ion-chevron-left" ng-click="back()"></button>
+	</ion-nav-buttons>
+	
 
-        <form style="" class="list" ng-controller="mainController" action="">
+	<ion-nav-buttons side="secondary">
+		<button class="button icon ion-navicon" ng-click="toggleRight()"></button>
+	</ion-nav-buttons>
+	
+</ion-nav-bar>
+
+<ion-nav-title>
+    <img alt="taskQL" height="30" src="/img/funnel.png">
+    Subrojects
+</ion-nav-title>
+	
+<ion-content padding="true" overflow-scroll="true" ng-controller="mainController">
+
+         <form style="" class="list" action="">
 	       <ion-list>
-	           <div class="item item-outline item-calm item-divider">{{ getProjectInfoRes.title }}</div>
+	           <div class="item item-calm item-divider">{{ getProjectInfoRes.title }}</div>
 
 	               <ion-item class="item item-text-wrap" 
 		               ng-repeat="subproject in getProjectInfoRes.subprojects" 
 		               ng-click="openSubproject(subproject.idex, subproject.title)">
 		               		{{ subproject.title }}
 			
-	                        <ion-option-button class="button-assertive" ng-click="deleteSubproject(subproject.idex, subproject.title)">delete</ion-option-button>
-	                        <ion-option-button class="button-energized" ng-click="renameSubproject(subproject.idex, subproject.title)">rename</ion-option-button>
+	                   <ion-option-button class="button-assertive" ng-click="deleteSubproject(subproject.idex, subproject.title)">delete</ion-option-button>
+	                   <ion-option-button class="button-energized" ng-click="renameSubproject(subproject.idex, subproject.title)">rename</ion-option-button>
 	
 	                        <div class="item-icon-right">
 	                            <i class="icon ion-chevron-left"></i>

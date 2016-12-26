@@ -1,6 +1,6 @@
 angular
 .module('taskQL')
-.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup) {
+.controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory, $ionicSideMenuDelegate) {
     
 	$scope.login = function(){
 
@@ -223,7 +223,19 @@ angular
 	    editor.setReadOnly(false);
 	    editor.setValue($rootScope.editorText, 1);
 	}
+
+	$scope.back = function(){
+		$ionicHistory.goBack()
+	}
+
+	$scope.toggleRight = function(){
+		$ionicSideMenuDelegate.toggleRight();
+	}
 	
+})
+
+.controller('sideMenuController', function($scope){
+	$scope.theme = 'theme';
 })
 
 .controller('registrationController', function($scope) {
