@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta name="viewport"
+	content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 <title>Index</title>
 
 <link rel="manifest" href="manifest.json">
@@ -23,7 +24,57 @@
 
 <body ng-app="taskQL">
 
-	<ion-nav-view></ion-nav-view>
+<ion-side-menus>
+
+	<ion-side-menu-content>
+
+			<ion-nav-bar>
+			</ion-nav-bar>
+
+			<ion-nav-view>
+			</ion-nav-view>
+
+	</ion-side-menu-content>
+
+
+	<ion-side-menu side="right">
+
+		<ion-header-bar class="bar-calm">
+			<h1 class="title">Menu</h1>
+		</ion-header-bar>
+
+		<ion-content>
+			<ion-list>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+					language
+					</div>
+
+					<select>
+					<option>deutsch</option>
+					<option>englisch</option>
+					</select>
+				</label>
+
+				<ion-item menu-close>
+				filter
+				</ion-item>
+
+				<ion-item menu-close>
+				calender
+				</ion-item>
+
+				<ion-item menu-close>
+				logout
+				</ion-item>
+
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+
+</ion-side-menus>
+	
 
 </body>
 </html>
