@@ -1,30 +1,41 @@
 angular
 .module('taskQL')
 .controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory, $ionicSideMenuDelegate) {
-    
+	
 	$scope.login = function(){
-
-		mainFactory.getLoginReq($scope.username, $scope.password).then(function(response){
+		
+		var url = 'https://alpha.taskql.com/rest/api/1/taskql/login';
+		var loginData = JSON.stringify({
+			username : $scope.username,
+			password : $scope.password
+		});
+		
+		mainFactory.getLoginReq(url, loginData).then(function(response){
 
 			$rootScope.loginResponse = response.data;
 			$rootScope.sessionToken = response.data.SessionToken;
+			$scope.getAllProjects();
 			$location.path('dashboard');
-
-			mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
-
-				$rootScope.getAllRes = response.data;
-
-			}).catch(function(response){
-				// request was not successful
-				// handle the error
-			});
 
 		}).catch(function(response){
 			// request was not successful
 			// handle the error
 		});
 	}
-
+	
+	$scope.getAllProjects = function(){
+		
+		var url = 'https://alpha.taskql.com/rest/api/1/project/getAll';
+		mainFactory.genericReq($rootScope.sessionToken, "GET", url, null).then(function(response){
+			
+			$rootScope.getAllRes = response.data;
+			
+		}).catch(function(response){
+			// request was not successful
+			// handle the error
+		});
+	}
+	
 	$scope.renameProject = function(projectID, projectTitle){
 
 		var renameInput = $ionicPopup.prompt({
@@ -37,20 +48,14 @@ angular
 		}).then(function(res) {
 
 			if(res) {
+				var url = 'https://alpha.taskql.com/rest/api/1/project/rename';
 				var request = JSON.stringify({
 					projectid : projectID,
 					renameprojecttitle : res
 				});
 
-				mainFactory.genericReq($rootScope.sessionToken, "PUT", 'https://alpha.taskql.com/rest/api/1/project/rename', request);
-				mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
-
-					$rootScope.getAllRes = response.data;
-
-				}).catch(function(response){
-					// request was not successful
-					// handle the error
-				});
+				mainFactory.genericReq($rootScope.sessionToken, "PUT", url, request);
+				$scope.getAllProjects();
 			}
 		});
 	}
@@ -65,20 +70,14 @@ angular
 
 		}).then(function(res) {
 
-			if(res) {					
+			if(res) {	
+				var url = 'https://alpha.taskql.com/rest/api/1/project/add';
 				var request = JSON.stringify({
 					addprojecttitle : res
 				});
 
-				mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/project/add', request);
-				mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
-
-					$rootScope.getAllRes = response.data;
-					
-				}).catch(function(response){
-					// request was not successful
-					// handle the error
-				});
+				mainFactory.genericReq($rootScope.sessionToken, "POST", url, request);
+				$scope.getAllProjects();
 			}
 		});
 	}
@@ -89,31 +88,30 @@ angular
 
 			title: 'Delete ' + projectTitle,
 			template: 'Are you sure you want to delete the project?'
-		}).
-
-		then(function(res) {
+		
+		}).then(function(res) {
 
 			if(res) {
-				mainFactory.genericReq($rootScope.sessionToken, "DELETE", 'https://alpha.taskql.com/rest/api/1/project/delete/', projectID);
-				mainFactory.getAllReq($rootScope.sessionToken).then(function(response){
-
-					$rootScope.getAllRes = response.data;
-
-				}).catch(function(response){
-					// request was not successful
-					// handle the error
-				});
+				var url = 'https://alpha.taskql.com/rest/api/1/project/delete/' + projectID;
+				mainFactory.genericReq($rootScope.sessionToken, "DELETE", url, null);
+				$scope.getAllProjects();
 			}
 		});
 	}
 	
-	$scope.getSubprojects = function(projectID){
+	$scope.getAllSubprojects = function(projectID){
+		
+		$rootScope.selectedID = projectID;
+		$scope.getProjectInfo();
+		$location.path('dashboard_subproject');
+	}
+	
+	$scope.getProjectInfo = function(){
 
-		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', projectID).then(function(response){
+		var url = 'https://alpha.taskql.com/rest/api/1/project/getInfoById/' + $rootScope.selectedID;
+		mainFactory.genericReq($rootScope.sessionToken, "GET", url, null).then(function(response){
 
 			$rootScope.getProjectInfoRes = response.data;
-			$rootScope.pID = projectID;
-			$location.path('dashboard_subproject');
 
 		}).catch(function(response){
 			// request was not successful
@@ -133,21 +131,15 @@ angular
 		}).then(function(res) {
 
 			if(res) {
+				var url = 'https://alpha.taskql.com/rest/api/1/subproject/rename';
 				var request = JSON.stringify({
-					title: res,
-					projectid: $scope.pID,
-					idex: subprojectIDEX
+					projectid: $rootScope.selectedID,
+					idex: subprojectIDEX,
+					title: res
 				});
 
-				mainFactory.genericReq($rootScope.sessionToken, "PUT", 'https://alpha.taskql.com/rest/api/1/subproject/rename', request);
-				mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', $rootScope.pID).then(function(response){
-
-					$rootScope.getProjectInfoRes = response.data;
-
-				}).catch(function(response){
-					// request was not successful
-					// handle the error
-				});
+				mainFactory.genericReq($rootScope.sessionToken, "PUT", url, request);
+				$scope.getProjectInfo();
 			}
 		});
 	}
@@ -162,20 +154,15 @@ angular
 
 		}).then(function(res) {
 
-			if(res) {					
+			if(res) {	
+				
+				var url = 'https://alpha.taskql.com/rest/api/1/subproject/add/' + $rootScope.selectedID;
 				var request = JSON.stringify({
-					subprojecttitle : res
+					addsubprojecttitle : res
 				});
 
-				mainFactory.genericReq($rootScope.sessionToken, "POST", 'https://alpha.taskql.com/rest/api/1/subproject/add', request);
-				mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', $rootScope.pID).then(function(response){
-
-					$rootScope.getProjectInfoRes = response.data;
-
-				}).catch(function(response){
-					// request was not successful
-					// handle the error
-				});
+				mainFactory.genericReq($rootScope.sessionToken, "POST", url, request);
+				$scope.getProjectInfo();
 			}
 		});
 	}
@@ -186,27 +173,22 @@ angular
 
 			title: 'Delete ' + subprojectTitle,
 			template: 'Are you sure you want to delete the subproject?'
-		}).
-
-		then(function(res) {
-
+		
+		}).then(function(res) {
+			
 			if(res) {
-				mainFactory.genericReq($rootScope.sessionToken, "DELETE", 'https://alpha.taskql.com/rest/api/1/subproject/delete/', $scope.pID +"/"+subprojectIDEX);
-				mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/project/getInfoById/', $rootScope.pID).then(function(response){
-
-					$rootScope.getProjectInfoRes = response.data;
-
-				}).catch(function(response){
-					// request was not successful
-					// handle the error
-				});
+				
+				var url = 'https://alpha.taskql.com/rest/api/1/subproject/delete/' + $rootScope.selectedID + '/' + subprojectIDEX;
+				mainFactory.genericReq($rootScope.sessionToken, "DELETE", url, null);
+				$scope.getProjectInfo();
 			}
 		});
 	}
 	
 	$scope.openSubproject = function(subprojectIDEX, subprojectTitle){
 
-		mainFactory.genericReq($rootScope.sessionToken, "GET", 'https://alpha.taskql.com/rest/api/1/subproject/getInfoByIdEx/', subprojectIDEX).then(function(response){
+		var url = 'https://alpha.taskql.com/rest/api/1/subproject/getInfoByIdEx/' + subprojectIDEX;
+		mainFactory.genericReq($rootScope.sessionToken, "GET", url, null).then(function(response){
 
 			$rootScope.getSubprojectInfoRes = response.data;
 			$rootScope.editorText = $rootScope.getSubprojectInfoRes.text;
