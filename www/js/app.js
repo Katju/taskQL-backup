@@ -1,55 +1,53 @@
-angular
-.module('taskQL', ['ionic', 'ui.ace'])
-.run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory
-    // bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+angular.module('taskQL', [ 'ionic', 'ui.ace' ]).run(function($ionicPlatform) {
+	$ionicPlatform.ready(function() {
+		if (window.cordova && window.cordova.plugins.Keyboard) {
+			// Hide the accessory bar by default (remove this to show the accessory
+			// bar above the keyboard
+			// for form inputs)
+			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops
-    // the viewport
-      // from snapping when text inputs are focused. Ionic handles this
-    // internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
+			// Don't remove this line unless you know what you are doing. It stops
+			// the viewport
+			// from snapping when text inputs are focused. Ionic handles this
+			// internally for
+			// a much nicer keyboard experience.
+			cordova.plugins.Keyboard.disableScroll(true);
+		}
+		if (window.StatusBar) {
+			StatusBar.styleDefault();
+		}
+	});
 })
 
-.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
-  $httpProvider.defaults.cache = true;
-  
-  $stateProvider
-    .state('registration', {
-      url:'/registration',
-      templateUrl:'templates/registration.html',
-      controller:'registrationController'
-    })
+.config(function($stateProvider, $urlRouterProvider) {
 
-    .state('login', {
-      url:'/login',
-      templateUrl: 'templates/login.html'
-    })
+	$stateProvider
+	.state('registration', {
+		url : '/registration',
+		templateUrl : 'templates/registration.html',
+		controller : 'registrationController'
+	})
 
-    .state('dashboard', {
-      url:'/dashboard',
-      templateUrl: 'templates/dashboard.html'
-   })
+	.state('login', {
+		url : '/login',
+		templateUrl : 'templates/login.html'
+	})
 
-    .state('dashboard_subproject', {
-      url:'/dashboard_subproject',
-      templateUrl: 'templates/dashboard_subproject.html'
-    })
+	.state('dashboard', {
+		url : '/dashboard',
+		templateUrl : 'templates/dashboard.html'
+	})
 
-    .state('projecteditor', {
-      url:'/projecteditor',
-      templateUrl: 'templates/projecteditor.html'
-    });
+	.state('dashboard_subproject', {
+		url : '/dashboard_subproject',
+		templateUrl : 'templates/dashboard_subproject.html'
+	})
 
-    $urlRouterProvider.otherwise('/login');
+	.state('projecteditor', {
+		url : '/projecteditor',
+		templateUrl : 'templates/projecteditor.html'
+	});
+
+	$urlRouterProvider.otherwise('/login');
+
 });
