@@ -1,36 +1,21 @@
 <ion-view> 
-
-<ion-nav-bar class="mynavbar">
-</ion-nav-bar>
-
-<ion-nav-title>
-    <img alt="taskQL" height="30" src="/img/funnel.png">
-    Login
-</ion-nav-title>
-
-
+<ion-nav-title> <img alt="taskQL" height="30" src="/img/funnel.png"> Login </ion-nav-title> 
 <ion-content>
-
-	<form style="" class="list" ng-controller="mainController" action="">
-		<div ng-include="dashboard.html"></div>
-		<div ng-include="dashboard_subproject.html"></div>
-	
-		<ion-list style=""> <label style=""
-			class="item item-input item-stacked-label"> <span
-			class="input-label">Email address</span> <input type="email"
-			ng-model="username" />
-		</label> <label style="" class="item item-input item-stacked-label"> <span
-			class="input-label">Password</span> <input type="password"
-			ng-model="password" />
-		</label> </ion-list>
-	
-		<div style="height: 40px;" class="spacer"></div>
-		<button class="button button-calm button-block" ng-click="login()">Log
-			in</button>
-		<button class="button button-calm button-clear button-block"
-			ui-sref="registration">Sign up</button>
-		<button class="button button-calm button-clear button-block">Forgot
-			your password?</button>
-	
-	</form>
-</ion-content> </ion-view>
+<form style="" class="list" action="" ng-controller="mainController">
+	<ion-list style=""> 
+		<label style="" class="item item-input item-stacked-label"> 
+			<span class="input-label">Email address</span> 
+			<input type="email" ng-model="username" />
+		</label> 
+		<label style="" class="item item-input item-stacked-label">	
+			<span class="input-label">Password</span> 
+			<input type="password" ng-model="password" />
+		</label> 
+	</ion-list>
+	<div style="height: 40px;" class="spacer"></div>
+	<button class="button button-calm button-block" ng-click="login()">Login</button>
+	<button class="button button-calm button-clear button-block" ui-sref="registration">Sign up</button>
+	<button class="button button-calm button-clear button-block">Forgot your password?</button>
+</form>
+</ion-content> 
+</ion-view>
