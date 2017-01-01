@@ -21,8 +21,7 @@ angular
   });
 })
 
-.config(function($httpProvider, $stateProvider, $urlRouterProvider) {
-  $httpProvider.defaults.cache = true;
+.config(function($stateProvider, $urlRouterProvider) {
   
   $stateProvider
     .state('registration', {
