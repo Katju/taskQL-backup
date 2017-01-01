@@ -234,10 +234,6 @@ angular
 	
 })
 
-.controller('sideMenuController', function($scope){
-	$scope.theme = 'theme';
-})
-
 .controller('registrationController', function($scope) {
 
 })
