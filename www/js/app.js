@@ -27,28 +27,65 @@ angular
   $stateProvider
     .state('registration', {
       url:'/registration',
-      templateUrl:'templates/registration.html',
-      controller:'registrationController'
+      views:{
+        'baseView': {
+          templateUrl:'templates/registration.html'
+        }
+      }
     })
 
     .state('login', {
       url:'/login',
-      templateUrl: 'templates/login.html'
+      views:{
+        'baseView': {
+          templateUrl:'templates/login.html'
+        }
+      }
     })
 
     .state('dashboard', {
       url:'/dashboard',
-      templateUrl: 'templates/dashboard.html'
+      views:{
+        'baseView': {
+          templateUrl: 'templates/dashboard.html'
+        },
+        'sideView': {
+          templateUrl: 'templates/sidemenu.html'
+        }
+      }
    })
 
     .state('dashboard_subproject', {
       url:'/dashboard_subproject',
-      templateUrl: 'templates/dashboard_subproject.html'
+      views:{
+        'baseView': {
+          templateUrl: 'templates/dashboard_subproject.html'
+        },
+        'sideView': {
+          templateUrl: 'templates/sidemenu.html'
+        }
+      }
     })
 
     .state('projecteditor', {
       url:'/projecteditor',
-      templateUrl: 'templates/projecteditor.html'
+      views:{
+        'baseView': {
+          templateUrl: 'templates/projecteditor.html'
+        },
+        'sideView': {
+          templateUrl: 'templates/sidemenu.html'
+        }
+      }
+    })
+
+    .state('filter', {
+      url:'/filter',
+      views:{
+        'sideView': {
+          templateUrl: 'templates/filter.html'
+        }
+      }
     });
 
     $urlRouterProvider.otherwise('/login');
