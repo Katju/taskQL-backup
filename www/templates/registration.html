@@ -1,47 +1,49 @@
 <ion-view>
 
-<ion-nav-bar class="mynavbar">
-</ion-nav-bar>
-
-<ion-nav-title>
-    <img alt="taskQL" height="30" src="/img/funnel.png">
-    Registration
-</ion-nav-title>
+	<ion-nav-bar class="mynavbar">
+	</ion-nav-bar>
+	
+	<ion-nav-title>
+		<img alt="taskQL" height="30" src="/img/funnel.png">
+		 Registration
+	</ion-nav-title>
 
 
     <ion-content>
-        
-        <form style="" class="list" ng-controller="registrationController">
-	        
-	        <ion-list style="">
-	        	<label style="" class="item item-input item-stacked-label">
-		            <span class="input-label">Name</span>
-		            <input type="text" ng-model="fullname"/>
-	            </label>
+		<form style="" class="list" ng-controller="registrationController">
+			<ion-list style="">
+				<label style="" class="item item-input item-stacked-label">
+					<span class="input-label">Name</span>
+					<input type="text" ng-model="fullname"/>
+				</label>
+				<label style="" class="item item-input item-stacked-label">
+					<span class="input-label">Email address</span>
+					<input type="email" ng-model="username"/ min-length="6" required>
+				</label>
+				<label style="" class="item item-input item-stacked-label">
+					<span class="input-label">Password</span>
+					<input placeholder="create a password" type="password" ng-model="password" min-length"8" required/>
+				</label>
+				<label style=""  class="item item-input item-stacked-label">
+					<span class="input-label">License</span>
+					<ion-radio ng-model="license" ng-value="'Free'">Free</ion-radio>
+					<ion-radio ng-model="license" ng-value="'Community'">Community</ion-radio>
+				</label>
+				<div class="padding">
+					<p ng-show="myForm.username.$error.required">* Username is required</p>
+					<p ng-show="myForm.username.$invalid && !myForm.username.$pristine">* Username must be an email address</p>
+					<p ng-show="myForm.username.$error.minlength">* Username must be longer than 6 characters</p>
+					<p ng-show="myForm.password.$error.required">* Password is required</p>
+					<p ng-show="myForm.password.$error.minlength">* Password must be longer than 8 characters</p>
+				</div>
+			</ion-list>
 
-	        	<label style="" class="item item-input item-stacked-label">
-		            <span class="input-label">Email address</span>
-		            <input type="text" ng-model="username"/>
-	            </label>
-
-	            <label style="" class="item item-input item-stacked-label">
-                    <span class="input-label">Password</span>
-                    <input placeholder="create a password" type="password" ng-model="password"/>
-               	</label>
-            </ion-list>
-			
 			<div style="height: 40px;" class="spacer"></div>
-
 			<button class="button button-block" ng-click="openModal()" ng-controller="nuBeController">please accept our Nutzungsbedingungen</button>
 			<div style="height: 40px;" class="spacer"></div>
-
-	
-	       	<button class="button button-stable button-block">sign up</button>	
-	       	<button class="button button-calm button-clear button-block" ui-sref="login">cancel</button>
-	       	
-        	
-        </form>
-    </ion-content>
+			<button class="button button-stable button-block">sign up</button>	
+			<button class="button button-calm button-clear button-block" ui-sref="login">cancel</button>
+		</form>
+	</ion-content>
 </ion-view>
 
- 
