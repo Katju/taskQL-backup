@@ -62,6 +62,9 @@ angular
         },
         'sideView': {
           templateUrl: 'templates/sidemenu.html'
+        },
+        'sideView': {
+          templateUrl: 'templates/sidemenu/filter.html'
         }
       }
     })
@@ -72,6 +75,15 @@ angular
         'baseView': {
           templateUrl: 'templates/projecteditor.html'
         },
+        'sideView': {
+          templateUrl: 'templates/sidemenu.html'
+        }
+      }
+    })
+
+    .state('sidemenu', {
+      url:'/sidemenu',
+      views: {
         'sideView': {
           templateUrl: 'templates/sidemenu.html'
         }
