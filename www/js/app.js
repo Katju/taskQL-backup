@@ -62,9 +62,6 @@ angular
         },
         'sideView': {
           templateUrl: 'templates/sidemenu.html'
-        },
-        'sideView': {
-          templateUrl: 'templates/sidemenu/filter.html'
         }
       }
     })

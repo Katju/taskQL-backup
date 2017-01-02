@@ -206,10 +206,6 @@ angular
 	    editor.setValue($rootScope.editorText, 1);
 	}
 
-	$scope.back = function(){
-		$ionicHistory.goBack()
-	}
-
 	$scope.toggleRight = function(){
 		$ionicSideMenuDelegate.toggleRight();
 	}
