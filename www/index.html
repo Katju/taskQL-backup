@@ -1,50 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-	
-	<title>Index</title>
-	
-	<link rel="manifest" href="manifest.json">
-	<link rel="stylesheet" href="css/ionic.app.css">
-	
-	<script src="lib/ionic/js/ionic.bundle.js" type="text/javascript"></script>
-	<script src="cordova.js" type="text/javascript"></script>
-	
-	<script src="js/app.js" type="text/javascript"></script>
-	<script src="js/controllers.js" type="text/javascript"></script>
-	<script src="js/services.js" type="text/javascript"></script>
-	
-	<script src="lib/ace-builds/src-min-noconflict/ace.js" type="text/javascript"></script>
-	<script src="lib/angular/angular.js" type="text/javascript"></script>
-	<script src="lib/angular-ui-ace/ui-ace.js" type="text/javascript"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>Index</title>
+
+<link rel="manifest" href="manifest.json">
+
+<link href="css/ionic.app.css" rel="stylesheet">
+
+<script src="lib/ionic/js/ionic.bundle.js"></script>
+<script src="cordova.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
+
+<script src="lib/ace-builds/src-min-noconflict/ace.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-ui-ace/ui-ace.js"></script>
+
 </head>
+
 <body ng-app="taskQL">
-	<ion-side-menus> 
-		<ion-side-menu-content>
-			<ion-nav-bar> </ion-nav-bar> 
-			<ion-nav-view> </ion-nav-view> 
-		</ion-side-menu-content> 
-		<ion-side-menu side="right"> 
-			<ion-header-bar class="bar-calm">
+
+<!-- main content, Aufruf Layout-->
+<ion-side-menus>
+
+	<ion-pane ion-side-menu-content>
+
+			<ion-nav-bar>
+			</ion-nav-bar>
+
+			<ion-nav-view name="baseView">
+			</ion-nav-view>
+
+	</ion-pane ion-side-menu-content>
+
+<!-- Seiten Menü, Aufruf Layout -->
+	<ion-side-menu side="right">
+
+		<ion-header-bar class="bar-calm" ng-controller="mainController">
 				<h1 class="title">Menu</h1>
-			</ion-header-bar> 
-			<ion-content> 
-			<ion-list> 
-				<label class="item item-input item-select">
-					<div class="input-label">language</div> 
-					<select>
-						<option>deutsch</option>
-						<option>englisch</option>
-					</select>
-				</label> 
-				<ion-item menu-close> filter </ion-item> 
-				<ion-item menu-close> calender </ion-item> 
-				<ion-item menu-close> logout </ion-item>
-			</ion-list> 
-			</ion-content> 
-		</ion-side-menu> 
-	</ion-side-menus>
+		</ion-header-bar>
+
+		<ion-nav-view name="sideView">
+		</ion-nav-view>
+
+	</ion-side-menu>
+
+</ion-side-menus>
+	
+
 </body>
 </html>
