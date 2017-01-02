@@ -14,7 +14,7 @@
 			<ion-item class="item item-text-warp" 
 				ng-repeat="project in getAllRes.projects" 
 				ng-click="getAllSubprojects(project.id)"> {{ project.title }}
-				<p value>{{ project.subprojects }} Subprojects. Last modified: {{ project.lastmodified * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+				<p>{{ project.subprojects }} Subprojects. Last modified: {{ project.lastmodified * 1000 | date:'yyyy-MM-dd HH:mm:ss'}}</p>
 				<ion-option-button class="button-assertive" ng-click="deleteProject(project.id, project.title)">delete</ion-option-button>
 				<ion-option-button class="button-energized" ng-click="renameProject(project.id, project.title)">rename</ion-option-button>
 				<div class="item-icon-right"><i class="icon ion-chevron-left"></i></div>
