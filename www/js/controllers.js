@@ -1,7 +1,7 @@
 angular
 .module('taskQL')
 .controller('mainController', function(mainFactory, $scope, $rootScope, $location, $ionicPopup, $ionicHistory, $ionicSideMenuDelegate) {
-	
+
 	$scope.login = function(){
 		
 		var url = 'https://alpha.taskql.com/rest/api/1/taskql/login';
@@ -185,8 +185,8 @@ angular
 		});
 	}
 	
-	$scope.openSubproject = function(subprojectIDEX, subprojectTitle){
-
+	$scope.openSubproject = function(subprojectIDEX){
+		
 		var url = 'https://alpha.taskql.com/rest/api/1/subproject/getInfoByIdEx/' + subprojectIDEX;
 		mainFactory.genericReq($rootScope.sessionToken, "GET", url, null).then(function(response){
 
@@ -200,10 +200,26 @@ angular
 		}); 
 	}
 	
+	$scope.saveSubproject = function(subprojectIDEX, subprojectLockID){
+
+		var url = 'https://alpha.taskql.com/rest/api/1/subproject/write';
+		var request = JSON.stringify({
+			idex: subprojectIDEX,
+			lockid: subprojectLockID,
+			text: $rootScope.editor.getValue()
+		});
+		mainFactory.genericReq($rootScope.sessionToken, "POST", url, request);
+	}
+	
 	$scope.aceLoaded = function(editor) {
-	    // Options
-	    editor.setReadOnly(false);
+		
+		editor.setReadOnly(false);
 	    editor.setValue($rootScope.editorText, 1);
+	    $rootScope.editor = ace.edit('aceEditor');
+	}
+	
+	$scope.aceChanged = function(editor) {
+	    // Options
 	}
 
 	$scope.back = function(){
@@ -216,18 +232,23 @@ angular
 	
 })
 
+.controller('sideMenuController', function($scope){
+	$scope.theme = 'theme';
+})
+
 .controller('registrationController', function($scope, mainFactory, $rootScope) {
 
 	$scope.register = function () {
 		var url="https://alpha.taskql.com/rest/api/1/taskql/register";
 		var request = JSON.stringify({
-             mailaddr: $scope.username,
+             username: $scope.username,
+             fullname: $scope.fullname,
              password: $scope.password,
              license: $scope.license,
              upgradeLic: ""
 		});
 		console.log(request);
-		mainFactory.genericReq($rootScope.sessionToken, "GET", url, request).then(function(response){
+		mainFactory.genericReq($rootScope.sessionToken, "POST", url, request).then(function(response){
 			
 		$rootScope.getAllRes = response.data;
 		console.log(JSON.stringify(response.data));
