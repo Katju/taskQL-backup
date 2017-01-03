@@ -216,9 +216,26 @@ angular
 	
 })
 
-.controller('registrationController', function($scope) {
+.controller('registrationController', function($scope, mainFactory, $rootScope) {
 
-})
+	$scope.register = function () {
+		var url="https://alpha.taskql.com/rest/api/1/taskql/register";
+		var request = JSON.stringify({
+             mailaddr: $scope.username,
+             password: $scope.password,
+             license: $scope.license,
+             upgradeLic: ""
+		});
+		console.log(request);
+		mainFactory.genericReq($rootScope.sessionToken, "GET", url, request).then(function(response){
+			
+		$rootScope.getAllRes = response.data;
+		console.log(JSON.stringify(response.data));
+		}).catch(function(response){
+			// request was not successful
+			// handle the error
+		});
+}})
 
 .controller('nuBeController', function ($scope, $ionicModal) {
 
